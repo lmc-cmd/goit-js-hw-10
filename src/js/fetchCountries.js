@@ -1,14 +1,13 @@
-// https://restcountries.com/v3.1/name/{name}
-
 import Notiflix from 'notiflix';
 
 export class CountryApi {
   #BASE_URL = 'https://restcountries.com/v3.1/name/';
   constructor() {
     this.searchQry = null;
+    this.qryParams = `?fields=name,capital,population,flags,languages`;
   }
   fetchCountry() {
-    return fetch(`${this.#BASE_URL}${this.searchQry}`)
+    return fetch(`${this.#BASE_URL}${this.searchQry}${this.qryParams}`)
       .then(response => {
         if (!response.ok) {
           throw `err`;
@@ -16,7 +15,7 @@ export class CountryApi {
         return response.json();
       })
       .catch(err => {
-        Notiflix.Notify.failure(`Err`);
+        Notiflix.Notify.failure(err);
       });
   }
 }

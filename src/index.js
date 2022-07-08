@@ -1,5 +1,5 @@
 import './css/styles.css';
-import countryCard from './templates/coutry_card.hbs';
+import createCountryList from './templates/coutry_card.hbs';
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
 import { CountryApi } from './js/fetchCountries';
@@ -12,12 +12,11 @@ const onInput = e => {
   e.priventdefault;
   // console.dir(e.target.value);
   const searchQry = e.target.value;
-  countryApi.searchQry = searchQry;
-  countryApi.fetchCountry().than(data => {
-    console(data);
+  countryApi.searchQry = searchQry.trim(` `);
+  countryApi.fetchCountry(data => {
+    listEl.innerHTML = createCountryList(data);
   });
 };
-// debounce(onInput, DEBOUNCE_DELAY);
 
 inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
