@@ -7,7 +7,7 @@ import { CountryApi } from './js/fetchCountries';
 // const debounce = require('lodash.debounce');
 
 const listEl = document.querySelector('.country-list');
-const DEBOUNCE_DELAY = 2000;
+const DEBOUNCE_DELAY = 300;
 const inputEl = document.querySelector('#search-box');
 const countryApi = new CountryApi();
 const onInput = e => {
