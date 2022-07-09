@@ -12,10 +12,16 @@ const inputEl = document.querySelector('#search-box');
 const countryApi = new CountryApi();
 const onInput = e => {
   e.priventdefault;
+
   listEl.innerHTML = null;
   // console.dir(e.target.value);
+
   const searchQry = e.target.value;
+
   countryApi.searchQry = searchQry.trim(` `);
+  if (!searchQry) {
+    return;
+  }
   countryApi
     .fetchCountry()
     .then(data => {

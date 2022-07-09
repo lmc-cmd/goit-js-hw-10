@@ -6,17 +6,20 @@ export class CountryApi {
     this.searchQry = null;
     this.qryParams = `?fields=name,capital,population,flags,languages`;
   }
+
   fetchCountry() {
-    return fetch(`${this.#BASE_URL}${this.searchQry}${this.qryParams}`)
-      .then(response => {
-        if (!response.ok) {
-          throw `err`;
-        }
-        return response.json();
-      })
-      .catch(err => {
-        Notiflix.Notify.failure(`Oops, there is no country with that name`);
-      });
+    if (this.searchQry) {
+      return fetch(`${this.#BASE_URL}${this.searchQry}${this.qryParams}`)
+        .then(response => {
+          if (!response.ok) {
+            throw `err`;
+          }
+          return response.json();
+        })
+        .catch(err => {
+          Notiflix.Notify.failure(`Oops, there is no country with that name`);
+        });
+    }
   }
 }
 

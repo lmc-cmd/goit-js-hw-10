@@ -1,16 +1,17 @@
 {{#each this}}
   <li class='gallery__item'> 
-    <h2>{{this.name.official}} </h2>
     <img
       src={{this.flags.png}} width="60" height="40"
       alt='flag of'{{this}}
       class='gallery__img'
     />
-    <p><b> Capital:</b> {{this.capital}} </p>
+    <h2>{{this.name.official}} </h2>
+    
+    {{!-- <p>{{this.}} </p>  --}}
+  </li>
+  <p><b> Capital:</b> {{this.capital}} </p>
     <p><b> Population:</b> {{this.population}} </p>
     <p><b> Languages:</b>
     {{#each languages}}{{this}};
     {{/each}} </p>
-    {{!-- <p>{{this.}} </p>  --}}
-  </li>
 {{/each}}
