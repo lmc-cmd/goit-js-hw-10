@@ -6,9 +6,11 @@
       alt='flag of'{{this}}
       class='gallery__img'
     />
-    <p> Capital: {{this.capital}} </p>
-    <p> Population: {{this.population}} </p>
-    <p> Languages:{{this.languages}} </p>
+    <p><b> Capital:</b> {{this.capital}} </p>
+    <p><b> Population:</b> {{this.population}} </p>
+    <p><b> Languages:</b>
+    {{#each languages}}{{this}};
+    {{/each}} </p>
     {{!-- <p>{{this.}} </p>  --}}
   </li>
 {{/each}}

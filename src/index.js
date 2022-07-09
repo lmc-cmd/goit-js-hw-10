@@ -16,26 +16,24 @@ const onInput = e => {
   // console.dir(e.target.value);
   const searchQry = e.target.value;
   countryApi.searchQry = searchQry.trim(` `);
-  countryApi.fetchCountry().then(data => {
-    if (data.length > 10) {
-      Notify.info(`Too many matches found. Please enter a more specific name`);
-      return;
-    }
-    if (data.length === 1) {
-      listEl.innerHTML = createCountryCard(data);
-      console.dir();
-    } else {
-      listEl.innerHTML = createCountryList(data);
-    }
-  });
+  countryApi
+    .fetchCountry()
+    .then(data => {
+      // const lengs = Object.values(data.languages);
+
+      if (data.length > 10) {
+        Notify.info(
+          `Too many matches found. Please enter a more specific name`
+        );
+        return;
+      }
+      if (data.length === 1) {
+        listEl.innerHTML = createCountryCard(data);
+        console.dir();
+      } else {
+        listEl.innerHTML = createCountryList(data);
+      }
+    })
+    .catch(err => `Oops, there is no country with that name`);
 };
-
 inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
-
-// console.log('inputEl :>> ', inputEl);
-
-// galleryApi.fetchImages().then(data => {
-//     listEl.innerHTML = createGalleryList(data.hits);
-//     moreBtnEl.classList.remove(`is-hidden`);
-//   });
-// };

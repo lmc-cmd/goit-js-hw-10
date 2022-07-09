@@ -15,7 +15,7 @@ export class CountryApi {
         return response.json();
       })
       .catch(err => {
-        Notiflix.Notify.failure(err);
+        Notiflix.Notify.failure(`Oops, there is no country with that name`);
       });
   }
 }
