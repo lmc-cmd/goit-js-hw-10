@@ -1,0 +1,10 @@
+{{#each this}}
+  <li class='gallery__item'> 
+    <img
+      src={{this.flags.png}} width="60" height="40"
+      alt='flag of'{{this}}
+      class='gallery__img'
+    />
+    <p>{{this.name.official}} </p>
+  </li>
+{{/each}}
