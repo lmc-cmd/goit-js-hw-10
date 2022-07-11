@@ -16,9 +16,9 @@ const onInput = e => {
   listEl.innerHTML = null;
   // console.dir(e.target.value);
 
-  const searchQry = e.target.value;
+  const searchQry = e.target.value.trim(` `);
 
-  countryApi.searchQry = searchQry.trim(` `);
+  countryApi.searchQry = searchQry;
   if (!searchQry) {
     return;
   }
