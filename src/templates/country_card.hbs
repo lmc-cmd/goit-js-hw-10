@@ -12,6 +12,6 @@
   <p><b> Capital:</b> {{this.capital}} </p>
     <p><b> Population:</b> {{this.population}} </p>
     <p><b> Languages:</b>
-    {{#each languages}}{{this}};
+    {{#each languages}}{{this}}{{#unless @last}},{{/unless}};
     {{/each}} </p>
 {{/each}}
